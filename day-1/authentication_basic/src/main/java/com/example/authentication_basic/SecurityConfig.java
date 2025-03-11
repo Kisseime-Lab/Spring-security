@@ -1,5 +1,7 @@
 package com.example.authentication_basic;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -19,7 +21,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .httpBasic(Customizer.withDefaults())
-                .authorizeHttpRequests().anyRequest().authenticated();
+                .authorizeHttpRequests(
+                        req -> req.requestMatchers("*/admin").hasRole("ADMIN").anyRequest().authenticated());
         return http.build();
     }
 
@@ -28,7 +31,12 @@ public class SecurityConfig {
         UserBuilder userBuilder = User.withDefaultPasswordEncoder();
         UserDetails user = userBuilder.username("toto")
                 .password("toto")
+                .roles("ADMIN")
                 .build();
-        return new InMemoryUserDetailsManager(user);
+        UserDetails user2 = userBuilder.username("user")
+                .password("user")
+                .roles("USER")
+                .build();
+        return new InMemoryUserDetailsManager(List.of(user, user2));
     }
 }

@@ -11,8 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class Controller {
 
     @GetMapping
-    public String getMethodName(@RequestParam String param) {
-        return "test";
+    public String getMethodName() {
+        return "USER";
+    }
+
+    @GetMapping("/admin")
+    public String frAdmin() {
+        return "ADMIN";
     }
 
 }
