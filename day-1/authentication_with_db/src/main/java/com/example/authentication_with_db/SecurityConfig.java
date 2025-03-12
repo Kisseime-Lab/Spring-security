@@ -12,6 +12,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.authorization.AuthorizationManagers;
+import static org.springframework.security.authorization.AuthorityAuthorizationManager.hasAuthority;
+import static org.springframework.security.authorization.AuthorityAuthorizationManager.hasRole;
+// import static org.springframework.security.authorization.AuthorizationManagers.*;
 
 @Configuration
 @EnableWebSecurity
@@ -25,7 +29,7 @@ public class SecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/users", HttpMethod.POST.name())).permitAll()
                         .requestMatchers(new AntPathRequestMatcher(
                                 "/users/**", HttpMethod.DELETE.name()))
-                        .hasAuthority("DELETE_USER")
+                        .access(AuthorizationManagers.allOf(hasAuthority("DELETE_USER"), hasRole("ADMIN")))
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults());
         return http.build();
