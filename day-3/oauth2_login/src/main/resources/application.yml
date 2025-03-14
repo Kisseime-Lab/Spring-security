@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: oauth2_login
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${google-client-id}
+            client-secret: ${google-secret}
+            scope: openid, profile,email
+            # redirect-uri: http://localhost:4500/login/oauth2/code/google
+            # client-name: Google
+          github:
+            client-id: ${github-client-id}
+            client-secret: ${github-secret-id}
+
+server:
+  port: 4500
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
