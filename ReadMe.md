@@ -1,5 +1,3 @@
----
-
 ### **Jour 1 : Authentification de base et gestion des utilisateurs**
 
 ### Leçons :
