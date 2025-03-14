@@ -192,7 +192,3 @@
 2. **Apprenez en faisant** : La pratique vous aidera à mieux comprendre les concepts que la théorie seule.
 3. **Documentez vos solutions** : Écrivez des notes sur les problèmes rencontrés et les solutions trouvées. Cela vous aidera à consolider vos connaissances.
 4. **Testez intensément** : Assurez-vous que vos solutions fonctionnent dans des scénarios réels et qu'elles sont robustes face aux attaques.
-
----
-
-Avec ce programme de **12 jours**, vous couvrirez **toutes les notions importantes de Spring Security** tout en passant la majorité de votre temps à coder et à résoudre des problèmes concrets. Bonne chance ! 🚀
